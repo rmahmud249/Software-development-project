@@ -1,4 +1,4 @@
-#Nexora Local Demo
+# Nexora Local Demo
 
 This project has been updated to run locally without an external Supabase backend.
 
