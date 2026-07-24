@@ -1,4 +1,4 @@
-# Nimbus Local Demo
+#Nexora Local Demo
 
 This project has been updated to run locally without an external Supabase backend.
 
@@ -20,7 +20,7 @@ npm run dev
 
 ## Demo credentials
 
-- Email: `demo@nimbus.com`
+- Email: `demo@nexora.com`
 - Password: `password`
 
 ## Admin features added
