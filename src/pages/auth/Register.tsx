@@ -24,7 +24,7 @@ export default function Register() {
     setLoading(true);
     try {
       await signUp(email, password, name);
-      toast('Account created — welcome to Nimbus!', 'success');
+      toast('Account created — welcome to Nexorabd!', 'success');
       navigate('/account');
     } catch (err: any) {
       toast(err.message ?? 'Sign up failed', 'error');
@@ -36,7 +36,7 @@ export default function Register() {
   return (
     <div>
       <h1 className="font-display font-bold text-3xl">Create your account</h1>
-      <p className="mt-2 text-ink-500">Join Nimbus and start shopping smarter.</p>
+      <p className="mt-2 text-ink-500">Join Nexorabd and start shopping smarter.</p>
 
       <form onSubmit={submit} className="mt-8 space-y-4">
         <Field label="Full name" icon={User}>
