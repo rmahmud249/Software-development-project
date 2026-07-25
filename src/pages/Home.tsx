@@ -233,18 +233,18 @@ export default function Home() {
       </Section>
 
       {/* NEWSLETTER */}
-      <section className="container-app">
+      <section className="container-app pt-12">
         <div className="glass-card p-8 sm:p-12 text-center relative overflow-hidden">
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-primary-500/10 blur-3xl" />
           <div className="relative">
-            <div className="mx-auto h-14 w-14 rounded-2xl bg-gradient-to-br from-primary-600 to-accent-500 grid place-items-center text-white mb-4">
+            <div className="mx-auto h-14 w-14 rounded-2xl bg-gradient-to-r from-[#0B1F8C] via-[#112A9B] to-[#0B1F8C]  grid place-items-center text-white mb-4">
               <Mail className="w-6 h-6" />
             </div>
-            <h3 className="font-display font-bold text-2xl sm:text-3xl">Join the Nimbus newsletter</h3>
+            <h3 className="font-display font-bold text-2xl sm:text-3xl">Join the Nexora newsletter</h3>
             <p className="mt-2 text-ink-500 dark:text-ink-400 max-w-md mx-auto">Be first to know about new drops, exclusive deals, and member-only offers.</p>
             <form onSubmit={(e) => { e.preventDefault(); toast('You are subscribed!', 'success'); }} className="mt-6 flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-              <input type="email" required placeholder="you@email.com" className="input" />
-              <button className="btn-primary justify-center">Subscribe <ArrowRight className="w-4 h-4" /></button>
+              <input type="email" required placeholder="nexora@email.com" className="input border border-ink-400 dark:border-ink-500 rounded-[10px]" />
+              <button className="btn-primary bg-[#0B1F8C] justify-center">Subscribe <ArrowRight className="w-4 h-4" /></button>
             </form>
           </div>
         </div>

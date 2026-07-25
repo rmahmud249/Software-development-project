@@ -20,8 +20,8 @@ export default function Footer() {
       <div className="container-app">
         <div className="glass-card grid grid-cols-2 md:grid-cols-4 gap-4 p-6">
           {[
-            { icon: Truck, t: 'Free Shipping', s: 'On orders over $75' },
-            { icon: RefreshCw, t: '30-Day Returns', s: 'Hassle-free returns' },
+            { icon: Truck, t: 'Free Shipping', s: 'On orders over BDT 2000' },
+            { icon: RefreshCw, t: '7-Day Returns', s: 'Hassle-free returns' },
             { icon: Shield, t: 'Secure Payment', s: 'Encrypted checkout' },
             { icon: Headphones, t: '24/7 Support', s: 'Always here to help' },
           ].map((b) => (
@@ -30,7 +30,7 @@ export default function Footer() {
                 <b.icon className="w-5 h-5" />
               </div>
               <div>
-                <p className="font-semibold text-sm text-ink-900 dark:text-white">{b.t}</p>
+                <p className="font-semibold text-sm text-black dark:text-white">{b.t}</p>
                 <p className="text-xs text-ink-500 dark:text-ink-400">{b.s}</p>
               </div>
             </div>
@@ -38,24 +38,23 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-12 bg-ink-950 text-ink-200">
+      <div className="mt-12 bg-gradient-to-r from-[#0B1F8C] via-[#112A9B] to-[#0B1F8C] text-ink-200">
         <div className="container-app py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 grid place-items-center text-white font-display font-bold">N</div>
-              <span className="font-display font-bold text-xl text-white">Nimbus</span>
+              <img src="../images/logo.png" className='h-full w-[200px]' alt="nexora-logo" />
             </Link>
-            <p className="mt-4 text-sm text-ink-400 max-w-sm">
+            <p className="mt-4 text-sm text-white max-w-sm">
               A premium marketplace for electronics, fashion, home, and lifestyle. Curated products, fair prices, fast delivery.
             </p>
             <form onSubmit={subscribe} className="mt-6 flex gap-2 max-w-sm">
-              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Your email" className="input bg-white/5 border-white/10 text-white placeholder:text-ink-500" />
-              <button className="btn-accent px-4"><Send className="w-4 h-4" /></button>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Your email" className="input rounded-[10px] bg-white border-white/10 text-black placeholder:text-ink-500" />
+              <button className="btn-accent bg-yellow-400 px-4 hover:bg-white"><Send className="w-5 h-5 text-black" /></button>
             </form>
             <div className="mt-6 flex items-center gap-3">
               {[Twitter, Instagram, Facebook, Youtube].map((Icon, i) => (
-                <a key={i} href="#" aria-label="social" className="h-9 w-9 grid place-items-center rounded-full bg-white/5 hover:bg-white/10 transition">
-                  <Icon className="w-4 h-4" />
+                <a key={i} href="#" aria-label="social" className="h-10 w-10 grid place-items-center rounded-full bg-yellow-400 hover:bg-white transition">
+                  <Icon className="w-5 h-5 font-bold text-black" />
                 </a>
               ))}
             </div>
@@ -82,12 +81,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10">
-          <div className="container-app py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-ink-400">
-            <p>© {new Date().getFullYear()} Nimbus. All rights reserved.</p>
+          <div className="container-app py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-ink-200">
+            <p>© {new Date().getFullYear()} Nexora. All rights reserved.</p>
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> support@nimbus.shop</span>
-              <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> +1 (800) 555-0142</span>
-              <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> San Francisco, CA</span>
+              <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> support@nexora.shop</span>
+              <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" />+8801540759308</span>
+              <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> Dhaka, Bangladesh</span>
             </div>
           </div>
         </div>
@@ -102,7 +101,7 @@ function FooterCol({ title, links }: { title: string; links: { label: string; to
       <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider">{title}</h4>
       <ul className="mt-4 space-y-2.5 text-sm">
         {links.map((l) => (
-          <li key={l.label}><Link to={l.to} className="text-ink-400 hover:text-white transition">{l.label}</Link></li>
+          <li key={l.label}><Link to={l.to} className="text-white hover:text-white transition">{l.label}</Link></li>
         ))}
       </ul>
     </div>
