@@ -42,14 +42,14 @@ export default function ProductCard({ product, index = 0 }: { product: Product; 
           />
           {/* badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-            {off > 0 && <span className="rounded-full bg-error-500 text-white text-[11px] font-semibold px-2.5 py-1 shadow">-{off}%</span>}
-            {product.is_new && <span className="rounded-full bg-primary-600 text-white text-[11px] font-semibold px-2.5 py-1 shadow">New</span>}
+            {off > 0 && <span className="rounded-full bg-red-600 text-white text-[11px] font-semibold px-2.5 py-1 shadow">-{off}%</span>}
+            {product.is_new && <span className="rounded-full bg-primary-800 text-white text-[11px] font-semibold px-2.5 py-1 shadow">New</span>}
             {product.is_flash_sale && <span className="rounded-full bg-accent-500 text-white text-[11px] font-semibold px-2.5 py-1 shadow">Flash</span>}
           </div>
           {/* quick actions */}
           <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-            <button onClick={onWish} aria-label="Toggle wishlist" className="h-9 w-9 grid place-items-center rounded-full glass text-ink-700 dark:text-white hover:text-error-500 transition">
-              <Heart className={`w-4 h-4 ${wished ? 'fill-error-500 text-error-500' : ''}`} />
+            <button onClick={onWish} aria-label="Toggle wishlist" className="h-9 w-9 grid place-items-center rounded-full glass text-ink-700 dark:text-white hover:text-red-600 transition">
+              <Heart className={`w-4 h-4 ${wished ? 'fill-red-600 text-red-600' : ''}`} />
             </button>
             <span className="h-9 w-9 grid place-items-center rounded-full glass text-ink-700 dark:text-white">
               <Eye className="w-4 h-4" />
@@ -57,7 +57,7 @@ export default function ProductCard({ product, index = 0 }: { product: Product; 
           </div>
           {/* add to cart bar */}
           <div className="absolute inset-x-0 bottom-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <button onClick={onAdd} className="btn-primary w-full text-sm py-2.5">
+            <button onClick={onAdd} className="btn-primary rounded-[8px] w-full text-sm py-2.5">
               <ShoppingCart className="w-4 h-4" /> Add to Cart
             </button>
           </div>

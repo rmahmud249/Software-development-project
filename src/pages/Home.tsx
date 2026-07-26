@@ -13,7 +13,7 @@ import 'swiper/css/effect-fade';
 
 import { fetchCategories, fetchProducts, type Product, type Category } from '../services/api';
 import ProductCard from '../components/ProductCard';
-import { ProductGridSkeleton } from '../components/Skeleton';
+import { ProductGridSkeleton, ProductCardSkeleton } from '../components/Skeleton';
 import { useToast } from '../context/ToastContext';
 import { timeLeft } from '../utils/format';
 
@@ -81,6 +81,17 @@ export default function Home() {
     })();
   }, [toast]);
 
+  const categoryFallbackImages = [
+    'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/277406/pexels-photo-277406.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/14578455/pexels-photo-14578455.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/19090/pexels-photo-19090.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/4491425/pexels-photo-4491425.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/792381/pexels-photo-792381.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  ];
+
   return (
     <div>
       {/* HERO */}
@@ -144,32 +155,37 @@ export default function Home() {
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-            {cats.map((c, i) => (
-              <motion.div key={c.id} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}>
-                <Link to={`/shop?category=${c.slug}`} className="group block glass-card overflow-hidden card-hover">
-                  <div className="aspect-square overflow-hidden bg-ink-100 dark:bg-ink-800">
-                    <img src={c.image_url ?? ''} alt={c.name} loading="lazy" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="p-3 text-center">
-                    <p className="font-semibold text-sm text-black dark:text-white">{c.name}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+            {Array.from({ length: 8 }).map((_, i) => {
+              const c = cats[i];
+              if (!c) return <div key={`empty-cat-${i}`} className="skeleton aspect-square rounded-2xl" />;
+              const imgSrc = c.image_url && c.image_url.length > 0 ? c.image_url : categoryFallbackImages[i % categoryFallbackImages.length];
+              return (
+                <motion.div key={c.id} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}>
+                  <Link to={`/shop?category=${c.slug}`} className="group block glass-card overflow-hidden card-hover">
+                    <div className="aspect-square overflow-hidden bg-ink-100 dark:bg-ink-800">
+                      <img src={imgSrc} alt={c.name} loading="lazy" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div className="p-3 text-center">
+                      <p className="font-semibold text-sm text-black dark:text-white">{c.name}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
         )}
       </Section>
 
       {/* FLASH SALE */}
       {flash.length > 0 && (
-        <Section title="Flash sale" subtitle="Hurry — deals end soon" icon={Flame} accent="text-error-500" link="/shop?flash=1">
+        <Section title="Flash sale" subtitle="Hurry — deals end soon" accent="text-error-500" link="/shop?flash=1">
           <FlashTimer products={flash} />
           <ProductGrid products={flash} loading={loading} />
         </Section>
       )}
 
       {/* FEATURED */}
-      <Section title="Featured products" subtitle="Handpicked favorites" icon={Star} accent="text-accent-500" link="/shop">
+      <Section title="Featured products" subtitle="Handpicked favorites" accent="text-accent-500" link="/shop">
         <ProductGrid products={featured} loading={loading} />
       </Section>
 
@@ -190,12 +206,12 @@ export default function Home() {
       </section>
 
       {/* NEW ARRIVALS */}
-      <Section title="New arrivals" subtitle="The latest drops" icon={Sparkles} accent="text-primary-500" link="/shop?new=1">
+      <Section title="New arrivals" subtitle="The latest drops" accent="text-primary-500" link="/shop?new=1">
         <ProductGrid products={fresh} loading={loading} />
       </Section>
 
       {/* BEST SELLERS */}
-      <Section title="Best sellers" subtitle="Customer favorites" icon={TrendingUp} accent="text-success-500" link="/shop?best=1">
+      <Section title="Best sellers" subtitle="Customer favorites" accent="text-success-500" link="/shop?best=1">
         <ProductGrid products={best} loading={loading} />
       </Section>
 
@@ -278,10 +294,31 @@ function Section({ title, subtitle, link, icon: Icon, accent, children }: {
 }
 
 function ProductGrid({ products, loading }: { products: Product[]; loading: boolean }) {
-  if (loading) return <ProductGridSkeleton count={4} />;
+  if (loading) return <ProductGridSkeleton count={8} />;
+  if (!products || products.length === 0) return <ProductGridSkeleton count={8} />;
+  const fallbackImages = [
+    'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/277406/pexels-photo-277406.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/14578455/pexels-photo-14578455.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/19090/pexels-photo-19090.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/4491425/pexels-photo-4491425.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/792381/pexels-photo-792381.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  ];
+
+  const slots = Array.from({ length: 8 });
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-      {products.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+      {slots.map((_, i) => {
+        const base = products[i % products.length];
+        // prefer a product image variation if available, otherwise use the fallback list
+        const productImage = (base.images && base.images.length > 0) ? base.images[i % base.images.length] : null;
+        const imageForSlot = productImage ?? fallbackImages[i % fallbackImages.length];
+
+        const displayProduct = { ...base, images: [imageForSlot] } as Product;
+        return <ProductCard key={`${base.id}-${i}`} product={displayProduct} index={i} />;
+      })}
     </div>
   );
 }
