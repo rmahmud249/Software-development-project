@@ -151,7 +151,7 @@ export default function Home() {
                     <img src={c.image_url ?? ''} alt={c.name} loading="lazy" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="p-3 text-center">
-                    <p className="font-semibold text-sm text-ink-900 dark:text-white">{c.name}</p>
+                    <p className="font-semibold text-sm text-black dark:text-white">{c.name}</p>
                   </div>
                 </Link>
               </motion.div>
@@ -174,17 +174,17 @@ export default function Home() {
       </Section>
 
       {/* DISCOUNT BANNER */}
-      <section className="container-app">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary-700 via-primary-600 to-accent-500 text-white p-8 sm:p-12">
+      <section className="container-app pt-12">
+        <div className="relative overflow-hidden rounded-2xl  bg-gradient-to-r from-[#0B1F8C] via-[#112A9B] to-[#0B1F8C] text-white p-8 sm:p-16">
           <div className="absolute inset-0 bg-grid-dark [background-size:32px_32px] opacity-20" />
           <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
           <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <span className="chip bg-white/15 text-white mb-3"><TrendingUp className="w-3.5 h-3.5" /> Limited offer</span>
-              <h3 className="font-display font-bold text-3xl sm:text-4xl">Get 20% off orders over $200</h3>
-              <p className="mt-2 text-white/85">Use code <span className="font-semibold tracking-wide">NIMBUS20</span> at checkout. Ends soon.</p>
+              <h3 className="font-display font-bold text-3xl sm:text-4xl">Get 20% off orders over BDT: 2000</h3>
+              <p className="mt-2 text-white/85">Use code <span className="font-semibold tracking-wide">NEXORA20</span> at checkout. Ends soon.</p>
             </div>
-            <Link to="/shop" className="btn bg-white text-primary-700 hover:bg-white/90 px-6 py-3 font-semibold">Shop now <ArrowRight className="w-4 h-4" /></Link>
+            <Link to="/shop" className="btn bg-yellow-400 text-black hover:bg-white/90 px-6 py-3 font-semibold">Shop now <ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>
       </section>
@@ -202,7 +202,7 @@ export default function Home() {
       {/* BRANDS */}
       <Section title="Popular brands" subtitle="Trusted by shoppers" link="/shop">
         <div className="glass-card p-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-          {['Nimbus','Aurora','Vertex','Lumen','Bloom','Apex','Kindred','Terra'].map((b) => (
+          {['Nexora','Aarong','Yellow','Apex','Lotto','Easy','Walton','Opsonin'].map((b) => (
             <div key={b} className="aspect-[3/2] grid place-items-center rounded-xl bg-ink-50 dark:bg-white/5 hover:bg-ink-100 dark:hover:bg-white/10 transition">
               <span className="font-display font-bold text-lg text-ink-700 dark:text-ink-200">{b}</span>
             </div>
@@ -215,16 +215,16 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-4">
           {reviews.map((r, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="glass-card p-6">
-              <Quote className="w-8 h-8 text-primary-500/40" />
+              <Quote className="w-8 h-8 text-[#0B1F8C]" />
               <p className="mt-3 text-ink-700 dark:text-ink-200 leading-relaxed">{r.text}</p>
               <div className="mt-5 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 grid place-items-center text-white font-semibold">{r.name.charAt(0)}</div>
+                <div className="h-10 w-10 rounded-full  bg-gradient-to-r from-[#0B1F8C] via-[#112A9B] to-[#0B1F8C] grid place-items-center text-white font-semibold">{r.name.charAt(0)}</div>
                 <div>
-                  <p className="font-semibold text-sm text-ink-900 dark:text-white">{r.name}</p>
-                  <p className="text-xs text-ink-500">{r.role}</p>
+                  <p className="font-semibold text-sm text-black dark:text-white">{r.name}</p>
+                  <p className="text-xs text-ink-800">{r.role}</p>
                 </div>
                 <div className="ml-auto flex">
-                  {Array.from({ length: r.rating }).map((_, k) => <Star key={k} className="w-4 h-4 fill-accent-400 text-accent-400" />)}
+                  {Array.from({ length: r.rating }).map((_, k) => <Star key={k} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                 </div>
               </div>
             </motion.div>
