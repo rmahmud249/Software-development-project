@@ -4,13 +4,15 @@ import { Minus, Plus, Trash2, ShoppingBag, Tag, X, ArrowRight, Truck } from 'luc
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { formatPrice } from '../utils/format';
+import { fetchProducts } from '../services/api';
 
 export default function Cart() {
-  const { items, subtotal, shipping, total, couponCode, couponDiscount, update, remove, applyCoupon, removeCoupon, count } = useCart();
+  const { items, subtotal, shipping, total, couponCode, couponDiscount, update, remove, applyCoupon, removeCoupon, count, add } = useCart();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [code, setCode] = useState('');
   const [applying, setApplying] = useState(false);
+  const [seeding, setSeeding] = useState(false);
 
   if (items.length === 0) {
     return (
@@ -37,6 +39,22 @@ export default function Cart() {
   return (
     <div className="container-app py-8">
       <h1 className="font-display font-bold text-3xl">Shopping cart</h1>
+      <div className="mt-2">
+        <button disabled={seeding} onClick={async () => {
+          setSeeding(true);
+          try {
+            const res = await fetchProducts({ pageSize: 4 });
+            for (const p of res.items) {
+              await add(p, 1);
+            }
+            toast('Added sample items to cart', 'success');
+          } catch (err) {
+            toast('Could not add sample items', 'error');
+          } finally {
+            setSeeding(false);
+          }
+        }} className="btn-outline mt-2">{seeding ? 'Adding...' : 'Add sample items'}</button>
+      </div>
       <p className="mt-1 text-ink-500">{count} item{count !== 1 ? 's' : ''}</p>
 
       <div className="mt-6 grid lg:grid-cols-[1fr_360px] gap-6">
