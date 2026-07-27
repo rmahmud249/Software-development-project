@@ -61,10 +61,10 @@ export default function Profile() {
         </div>
         <div>
           <label className="text-sm font-medium">Phone</label>
-          <input value={phone} onChange={(e) => setPhone(e.target.value)} className="input mt-1.5" placeholder="+1 …" />
+          <input value={phone} onChange={(e) => setPhone(e.target.value)} className="input mt-1.5" placeholder="+8801540759308" />
         </div>
         <div className="sm:col-span-2">
-          <button disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Save changes'}</button>
+          <button disabled={saving} className="btn-primary bg-[#0B1F8C]">{saving ? 'Saving…' : 'Save changes'}</button>
         </div>
       </form>
     </div>

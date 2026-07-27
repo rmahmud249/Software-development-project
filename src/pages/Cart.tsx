@@ -101,7 +101,7 @@ export default function Cart() {
               <button disabled={applying} className="btn-outline px-4">Apply</button>
             </form>
           )}
-          <p className="mt-2 text-xs text-ink-400">Try WELCOME10, FREESHIP, or NIMBUS20</p>
+          <p className="mt-2 text-xs text-ink-400">Try WELCOME10, FREESHIP, or NEXORA20</p>
 
           <div className="mt-5 space-y-2.5 text-sm">
             <Row label="Subtotal" value={formatPrice(subtotal)} />

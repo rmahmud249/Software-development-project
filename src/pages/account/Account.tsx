@@ -19,7 +19,7 @@ export default function Account() {
       <div className="grid lg:grid-cols-[260px_1fr] gap-6">
         <aside className="glass-card p-5 h-fit sticky top-32">
           <div className="flex items-center gap-3 pb-4 border-b border-ink-200 dark:border-white/10">
-            <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 grid place-items-center text-white font-display font-bold">
+            <div className="h-12 w-12 rounded-full bg-gradient-to-r from-[#0B1F8C] via-[#112A9B] to-[#0B1F8C] grid place-items-center text-white font-display font-bold">
               {(user?.email ?? 'U').charAt(0).toUpperCase()}
             </div>
             <div className="min-w-0">

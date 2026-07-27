@@ -40,13 +40,13 @@ export default function Register() {
 
       <form onSubmit={submit} className="mt-8 space-y-4">
         <Field label="Full name" icon={User}>
-          <input required value={name} onChange={(e) => setName(e.target.value)} className="input pl-10" placeholder="Jane Doe" />
+          <input required value={name} onChange={(e) => setName(e.target.value)} className="input rounded-[10px] py-3.5 pl-10" placeholder="Enter your name.." />
         </Field>
         <Field label="Email" icon={Mail}>
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input pl-10" placeholder="you@email.com" />
+          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input rounded-[10px] py-3.5  pl-10" placeholder="nexora@email.com" />
         </Field>
         <Field label="Password" icon={Lock}>
-          <input type={show ? 'text' : 'password'} required value={password} onChange={(e) => setPassword(e.target.value)} className="input pl-10 pr-10" placeholder="At least 6 characters" />
+          <input type={show ? 'text' : 'password'} required value={password} onChange={(e) => setPassword(e.target.value)} className="input rounded-[10px] py-3.5 pl-10 pr-10" placeholder="At least 6 characters" />
           <button type="button" onClick={() => setShow((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-700 dark:hover:text-white">
             {show ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
@@ -61,13 +61,13 @@ export default function Register() {
         )}
         <label className="flex items-start gap-2 text-sm text-ink-600 dark:text-ink-300">
           <input type="checkbox" required className="mt-0.5 rounded" />
-          <span>I agree to the <a href="#" className="text-primary-600 hover:underline">Terms</a> and <a href="#" className="text-primary-600 hover:underline">Privacy Policy</a>.</span>
+          <span>I agree to the <a href="#" className="text-[#0B1F8C] hover:underline">Terms</a> and <a href="#" className="text-[#0B1F8C] hover:underline">Privacy Policy</a>.</span>
         </label>
-        <button disabled={loading} className="btn-primary w-full py-3">{loading ? 'Creating account…' : 'Create account'}</button>
+        <button disabled={loading} className="btn-primary py-3.5 bg-[#0B1F8C] w-full">{loading ? 'Creating account…' : 'Create account'}</button>
       </form>
 
       <p className="mt-6 text-center text-sm text-ink-500">
-        Already have an account? <Link to="/auth/login" className="text-primary-600 font-semibold hover:underline">Sign in</Link>
+        Already have an account? <Link to="/auth/login" className="text-[#0B1F8C] font-semibold hover:underline">Sign in</Link>
       </p>
     </div>
   );

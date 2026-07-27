@@ -117,10 +117,10 @@ export default function Navbar() {
             {user ? (
               <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
                 <button className="h-10 px-2 flex place-items-center rounded-xl hover:bg-ink-100 dark:hover:bg-white/5 transition gap-1">
-                  <div className="h-7 w-7 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 grid place-items-center text-white text-xs font-semibold">
+                  <div className="h-7 w-7 rounded-full bg-yellow-400 grid place-items-center text-white text-xs font-semibold">
                     {(user.email ?? 'U').charAt(0).toUpperCase()}
                   </div>
-                  <ChevronDown className="w-3.5 h-3.5 hidden sm:block" />
+                  <ChevronDown className="w-3.5 h-3.5 text-white hidden sm:block" />
                 </button>
                 {userOpen && (
                   <div className="absolute right-0 top-full pt-2 w-56">

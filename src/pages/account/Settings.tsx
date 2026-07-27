@@ -26,10 +26,9 @@ export default function Settings() {
 
         <Card icon={Globe} title="Language" desc="Multi-language ready">
           <select className="input w-auto" onChange={() => toast('Language updated', 'success')}>
+            <option>Bangla</option>
             <option>English</option>
-            <option>Español</option>
-            <option>Français</option>
-            <option>Deutsch</option>
+            <option>Hindi</option>
           </select>
         </Card>
 

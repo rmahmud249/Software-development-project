@@ -47,13 +47,13 @@ export default function ForgotPassword() {
           <label className="text-sm font-medium">Email</label>
           <div className="relative mt-1.5">
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-400" />
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input pl-10" placeholder="you@email.com" />
+            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input rounded-[10px] py-3.5 pl-10" placeholder="nexora@email.com" />
           </div>
         </div>
-        <button disabled={loading} className="btn-primary w-full py-3">{loading ? 'Sending…' : 'Send reset link'}</button>
+        <button disabled={loading} className="btn-primary bg-[#0B1F8C] w-full py-3.5">{loading ? 'Sending…' : 'Send reset link'}</button>
       </form>
       <p className="mt-6 text-center text-sm text-ink-500">
-        Remembered it? <Link to="/auth/login" className="text-primary-600 font-semibold hover:underline">Sign in</Link>
+        Remembered it? <Link to="/auth/login" className="text-[#0B1F8C] font-semibold hover:underline">Sign in</Link>
       </p>
     </div>
   );
