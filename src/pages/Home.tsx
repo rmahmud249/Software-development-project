@@ -23,21 +23,21 @@ const slides = [
     sub: 'Up to 30% off premium audio gear',
     cta: 'Shop audio',
     href: '/shop?category=electronics',
-    image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1600&q=80',
   },
   {
     title: 'Fresh season, fresh style',
     sub: 'New arrivals in fashion & footwear',
     cta: 'Explore fashion',
     href: '/shop?category=fashion',
-    image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80',
   },
   {
     title: 'Make every space feel like home',
     sub: 'Curated home & living essentials',
     cta: 'Discover home',
     href: '/shop?category=home',
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80',
   },
 ];
 

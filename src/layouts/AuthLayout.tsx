@@ -8,7 +8,7 @@ export default function AuthLayout() {
       {/* form side */}
       <div className="flex flex-col p-6 sm:p-10">
         <Link to="/" className="flex items-center gap-2">
-          <img src="../images/blue-logo.png" alt="Nexorabd logo"className="h-full w-[200px]" />
+          <img src="/blue-logo.png" alt="Nexorabd logo" className="h-full w-[200px]" />
         </Link>
         <div className="flex-1 grid place-items-center py-10">
           <div className="w-full max-w-md">

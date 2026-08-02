@@ -25,9 +25,12 @@ const AccountAddresses = lazy(() => import('./pages/account/Addresses'));
 const AccountProfile = lazy(() => import('./pages/account/Profile'));
 const AccountSettings = lazy(() => import('./pages/account/Settings'));
 const Admin = lazy(() => import('./pages/admin/Admin'));
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
 const AdminProducts = lazy(() => import('./pages/admin/Products'));
 const AdminOrders = lazy(() => import('./pages/admin/Orders'));
 const AdminCustomers = lazy(() => import('./pages/admin/Customers'));
+const AdminAnalytics = lazy(() => import('./pages/admin/Analytics'));
+const AdminSettings = lazy(() => import('./pages/admin/Settings'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function PageFallback() {
@@ -70,9 +73,12 @@ export default function App() {
                         <Route path="settings" element={<AccountSettings />} />
                       </Route>
                       <Route path="/admin" element={<Admin />}>
-                        <Route index element={<AdminProducts />} />
+                        <Route index element={<AdminDashboard />} />
+                        <Route path="products" element={<AdminProducts />} />
                         <Route path="orders" element={<AdminOrders />} />
                         <Route path="customers" element={<AdminCustomers />} />
+                        <Route path="analytics" element={<AdminAnalytics />} />
+                        <Route path="settings" element={<AdminSettings />} />
                       </Route>
                       <Route path="*" element={<NotFound />} />
                     </Route>

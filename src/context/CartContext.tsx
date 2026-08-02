@@ -41,6 +41,26 @@ function priceOf(p: Product) {
   return p.sale_price != null && p.sale_price < p.price ? p.sale_price : p.price;
 }
 
+function imageForProduct(product: Partial<Product> | null | undefined): string {
+  const images = Array.isArray(product?.images) ? product.images.filter(Boolean) : [];
+  if (images.length > 0) return images[0];
+
+  const haystack = `${product?.title ?? ''} ${product?.description ?? ''}`.toLowerCase();
+  if (/laptop|notebook|computer/.test(haystack)) {
+    return 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80';
+  }
+  if (/camera|lens|photo|photography/.test(haystack)) {
+    return 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80';
+  }
+  if (/phone|smartphone|mobile|iphone|android/.test(haystack)) {
+    return 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80';
+  }
+  if (/grocery|food|organic|pantry|fruit|vegetable|snack/.test(haystack)) {
+    return 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80';
+  }
+  return 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600';
+}
+
 export function CartProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const [items, setItems] = useState<CartLine[]>([]);
@@ -75,7 +95,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             product_id: l.product_id,
             title: l.product.title,
             slug: l.product.slug,
-            image: (l.product.images?.[0]) ?? '',
+            image: imageForProduct(l.product),
             price: priceOf(l.product),
             base_price: l.product.price,
             quantity: l.quantity,
@@ -120,7 +140,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       product_id: p.id,
       title: p.title,
       slug: p.slug,
-      image: p.images?.[0] ?? '',
+      image: imageForProduct(p),
       price: unit,
       base_price: p.price,
       quantity: qty,

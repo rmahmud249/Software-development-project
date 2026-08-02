@@ -61,7 +61,7 @@ export default function Navbar() {
         <div className="w-1/4 flex justify-start">
           <Link to="/" className="shrink-0">
             <img
-              src="images/logo.png"
+              src="/logo.png"
               alt="NexoraBD"
               className="h-12 w-auto"
             />

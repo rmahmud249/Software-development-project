@@ -3,9 +3,12 @@ import { LayoutDashboard, Package, ShoppingCart, Users, BarChart3, Settings, Arr
 
 export default function Admin() {
   const items = [
-    { to: '/admin', label: 'Products', icon: Package, end: true },
+    { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
+    { to: '/admin/products', label: 'Products', icon: Package },
     { to: '/admin/orders', label: 'Orders', icon: ShoppingCart },
     { to: '/admin/customers', label: 'Customers', icon: Users },
+    { to: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
+    { to: '/admin/settings', label: 'Settings', icon: Settings },
   ];
   return (
     <div className="min-h-screen bg-ink-50 dark:bg-ink-950">
@@ -26,11 +29,7 @@ export default function Admin() {
                 <it.icon className="w-4 h-4" /> {it.label}
               </NavLink>
             ))}
-            <div className="pt-3 mt-3 border-t border-white/10 grid gap-1 text-ink-400 text-xs">
-              <span className="px-3 py-1.5 flex items-center gap-2"><LayoutDashboard className="w-3.5 h-3.5" /> Dashboard</span>
-              <span className="px-3 py-1.5 flex items-center gap-2"><BarChart3 className="w-3.5 h-3.5" /> Analytics</span>
-              <span className="px-3 py-1.5 flex items-center gap-2"><Settings className="w-3.5 h-3.5" /> Settings</span>
-            </div>
+
           </nav>
           <Link to="/" className="mt-6 inline-flex items-center gap-1.5 text-sm text-ink-400 hover:text-white">
             <ArrowLeft className="w-4 h-4" /> Back to store

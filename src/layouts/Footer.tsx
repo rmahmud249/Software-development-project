@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="container-app py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2">
-              <img src="../images/logo.png" className='h-full w-[200px]' alt="nexora-logo" />
+              <img src="/logo.png" className='h-full w-[200px]' alt="nexora-logo" />
             </Link>
             <p className="mt-4 text-sm text-white max-w-sm">
               A premium marketplace for electronics, fashion, home, and lifestyle. Curated products, fair prices, fast delivery.
